@@ -1,118 +1,66 @@
-# Secure Compute Foundations (AWS)
+# Secure Compute Foundations (STC Academy)
 
-## Overview
+Secure Compute Foundations is **Phase 2** of the SecureTheCloud (STC) Academy curriculum.
 
-**Secure Compute Foundations (AWS)** defines the baseline security architecture required to safely run workloads on Amazon Web Services.  
-It focuses on **identity-first execution**, **least-privilege compute roles**, and **strong workload isolation**, rather than perimeter-only controls.
-
-This foundation is intentionally minimal, opinionated, and production-aligned.
+This course focuses on **how compute is placed, isolated, accessed, and observed**
+inside a cloud environment — before Kubernetes, Zero Trust mesh, or advanced platforms.
 
 ---
 
-## Why Secure Compute Matters
+## 🎯 What You Will Learn
 
-In AWS, compute is where **identity, permissions, and data intersect**.
+By the end of this course, you will be able to:
 
-Most cloud breaches originate from:
-- Over-privileged instance or task roles
-- Insecure instance metadata access
-- Weak isolation between workloads
-- Implicit trust between services or accounts
-
-Secure compute foundations prevent compute resources from becoming **privilege escalation or lateral movement paths**.
+- Design production-grade VPC and subnet layouts
+- Deploy compute with **no public exposure**
+- Control egress using NAT and routing intent
+- Compare bastion-based access vs identity-native access
+- Use VPC Flow Logs as **security telemetry**, not just networking data
 
 ---
 
-## Core Principles
+## 🧱 Course Structure
 
-### Identity Is the Perimeter
-- Every workload runs with an explicit IAM role
-- No embedded credentials
-- No shared roles across unrelated services
+This course is composed of **hands-on labs**, each isolated and ordered.
+```
 
-### Least Privilege by Default
-- Permissions scoped to required actions only
-- No wildcard policies
-- Trust policies are explicit and auditable
-
-### Strong Workload Isolation
-- Private compute by default
-- Separation across VPCs, subnets, and accounts
-- A compromise must not propagate
-
-### Explicit Trust Relationships
-- All role assumptions are intentional
-- Cross-account access is tightly scoped
-- Nothing is trusted implicitly
+| Lab | Title |
+|----|------|
+| 2.1 | Secure VPC Layout & Network Tiering |
+| 2.2 | Private Subnets & Default-Deny Compute |
+| 2.3 | Bastion Hosts vs Zero Trust Access |
+| 2.4 | VPC Flow Logs as Security Telemetry |
+```
 
 ---
 
-## AWS Compute Surfaces
+## 🔐 Security Philosophy
 
-These principles apply consistently across:
+This course is built on these principles:
 
-- Amazon EC2
-- Amazon ECS
-- Amazon EKS
-- AWS Lambda
-
-Each service has a different execution model, but the same security expectations.
+- **No direct internet exposure**
+- **Least privilege networking**
+- **Identity before access**
+- **Telemetry before response**
 
 ---
 
-## Key Security Controls
+## 📦 Prerequisites
 
-- Per-workload IAM roles
-- IMDSv2 enforcement (where applicable)
-- Private networking by default
-- Restricted outbound access
-- Immutable infrastructure patterns
-- CloudTrail and VPC-level telemetry enabled
+- Basic AWS familiarity
+- IAM / Identity fundamentals (STC Phase 1 recommended)
 
 ---
 
-## Threats Addressed
+## 🧠 STC Academy Integration
 
-- Credential theft from compute
-- Instance metadata exploitation
-- Role chaining and privilege escalation
-- Cross-account trust abuse
-- Lateral movement between workloads
+This repository is:
 
----
-
-## Scope Boundaries
-
-This foundation **does not** cover:
-- Application-level security
-- SIEM or detection tooling
-- Compliance frameworks
-- Automated remediation
-
-Those layers depend on compute being secure first.
+- Ingested by **MGF (Multi-Graph-Fabric)**
+- Indexed by STC Academy
+- Used by STC AI for deterministic teaching
+- Reused for interview and consulting scenarios
 
 ---
 
-## Intended Audience
-
-- Cloud Security Architects  
-- Platform / Infrastructure Engineers  
-- DevOps and SREs with security responsibility  
-- Security Consultants  
-
----
-
-## Status
-
-**Foundational and stable.**  
-This layer changes slowly and is designed to support higher-level security capabilities without rework.
-
----
-
-## Next
-
-Secure Compute Foundations is a prerequisite for:
-- Zero Trust cloud architectures
-- Identity attack-path analysis
-- Advanced security reasoning
-- Consulting-grade assessments
+© SecureTheCloud.dev — STC Academy
