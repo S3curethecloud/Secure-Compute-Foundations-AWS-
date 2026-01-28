@@ -78,21 +78,21 @@ Navigate to:
 - Open **Flow Logs** → **Create flow log**
 
 Configure:
-
+```
 | Setting | Value |
 |------|------|
 | Filter | All |
 | Destination | CloudWatch Logs |
 | Log group | `/stc/p2/vpc-flowlogs` |
 | IAM role | `stc-p2-vpc-flowlogs-role` |
-
+```
 ---
 
 ### Step 3 — Generate Network Traffic
 
 From your private EC2 instance (via SSM):
 
-```bash
+```
 curl https://example.com
 Optional:
 
@@ -118,7 +118,7 @@ Port
 Action (ACCEPT / REJECT)
 
 Direction
-
+---
 🔍 Interpreting Flow Logs (Security View)
 ACCEPT
 Traffic allowed by SG + NACL + routing
@@ -135,7 +135,7 @@ Misconfigured routing
 Security Group enforcement
 
 📌 Rejected traffic is often more valuable than accepted traffic.
-
+---
 🔐 Security Design Principles Applied
 This lab enforces:
 
@@ -146,7 +146,7 @@ Telemetry-driven security
 Verification of routing intent
 
 Evidence-based security decisions
-
+---
 ✅ Validation Checklist
 Confirm all of the following:
 
@@ -161,6 +161,8 @@ Confirm all of the following:
  No unexpected inbound flows observed
 
 If traffic surprises you — investigate. That’s the point.
+---
+---
 
 🧠 What You Just Built (Phase 2 Summary)
 Across Phase 2, you built:
