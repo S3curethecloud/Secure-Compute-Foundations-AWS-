@@ -1,0 +1,15 @@
+mgf_version: 1.0
+authority: STC-AUTHORITY-ALL
+
+entity:
+  type: course
+  name: Secure Compute Foundations
+  phase: Phase 2
+  domain: compute
+  track: STC Academy
+
+ingestion:
+  scan_paths:
+    - labs/**/metadata.json
+  enforce_order: true
+  allow_drift: false
