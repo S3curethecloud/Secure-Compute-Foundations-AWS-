@@ -1,15 +1,137 @@
-mgf_version: 1.0
-authority: STC-AUTHORITY-ALL
+mgf_version: "1.0"
 
-entity:
-  type: course
-  name: Secure Compute Foundations
-  phase: Phase 2
-  domain: compute
-  track: STC Academy
+authority:
+  mode: MGF-AUTHORITY-ALL
+  id: MGF-AUTH-PHASE-2-SECURE-COMPUTE
+  name: "Phase 2 — Secure Compute Foundations"
+  status: LOCKED
+  source: stc-intelligence-core
+  required: true
+  theme: "How compute is placed, isolated, and observed"
 
-ingestion:
-  scan_paths:
-    - labs/**/metadata.json
-  enforce_order: true
-  allow_drift: false
+repo:
+  name: stc-academy-secure-compute-foundations
+  type: platform
+  owner: SecureTheCloud
+  canonical: true
+
+sync:
+  enabled: true
+  mode: delta
+
+classification:
+  domains:
+    - compute
+    - identity
+    - zero_trust
+  clouds:
+    - aws
+  use_cases:
+    - student
+    - interview
+    - consulting
+
+definition:
+  problem_statement: >
+    After identity is established, where should compute live and how
+    should it communicate securely without exposing unnecessary
+    network trust?
+
+  canonical_definition: >
+    Phase 2 — Secure Compute Foundations defines how workloads are
+    placed, isolated, and observed in cloud environments. This phase
+    establishes private-by-default compute, explicit network intent,
+    controlled access paths, and foundational telemetry. Phase 2
+    creates the conditions required for Zero Trust enforcement in
+    Phase 3.
+
+architectural_pillars:
+  - id: private_compute_placement
+    name: "Private-by-Default Compute"
+    depends_on: "Phase 1 — Identity Foundations"
+    description: >
+      Workloads are deployed without public IPs and are inaccessible
+      by default from the internet.
+
+  - id: explicit_network_intent
+    name: "Explicit Network Intent"
+    description: >
+      Routing, subnetting, and security group rules are intentional and
+      minimal. No implicit trust is granted by network location.
+
+  - id: controlled_access_paths
+    name: "Controlled Access Paths"
+    description: >
+      Administrative and operational access paths are deliberate,
+      auditable, and limited. Bastions and open inbound access are
+      treated as legacy patterns.
+
+  - id: foundational_telemetry
+    name: "Foundational Telemetry"
+    prepares_for: "Phase 3 — Zero Trust Architecture"
+    description: >
+      Network and access telemetry are enabled to provide visibility
+      into workload behavior and communication patterns.
+
+labs:
+  canonical:
+    - id: P2-LAB-01
+      path: labs/phase-2-secure-compute/lab-2-1-secure-vpc-layout
+      title: "Secure VPC Layout"
+      purpose: "Establish private subnets and secure routing foundations"
+
+    - id: P2-LAB-02
+      path: labs/phase-2-secure-compute/lab-2-2-private-subnets
+      title: "Private Subnets and Compute Isolation"
+      purpose: "Deploy compute in isolated private subnets"
+
+    - id: P2-LAB-03
+      path: labs/phase-2-secure-compute/lab-2-3-bastion-vs-zero-trust-access
+      title: "Bastion Hosts vs Zero Trust Access"
+      purpose: "Compare legacy access models with identity-aware access"
+
+    - id: P2-LAB-04
+      path: labs/phase-2-secure-compute/lab-2-4-vpc-flow-logs
+      title: "VPC Flow Logs as Security Telemetry"
+      purpose: "Enable network telemetry for visibility and detection"
+
+exclusions:
+  - kubernetes_or_container_platforms
+  - service_meshes
+  - advanced_zero_trust_enforcement
+  - siem_and_response_automation
+
+knowledge_outcomes:
+  - "Design private-by-default compute architectures"
+  - "Explain subnetting and routing from a security perspective"
+  - "Eliminate unnecessary inbound network exposure"
+  - "Differentiate legacy bastion access from Zero Trust access"
+  - "Enable and interpret foundational network telemetry"
+  - "Explain how Phase 2 enables Zero Trust in Phase 3"
+
+phase_relationships:
+  phase_1: "Identity establishes who"
+  phase_2: "Compute defines where and how workloads communicate"
+  phase_3: "Zero Trust enforces whether access continues"
+
+stc_ai:
+  enabled: true
+  authority_level: phase
+  permissions:
+    - teach_secure_compute_architecture
+    - explain_network_isolation
+    - critique_bastion_access_models
+    - prepare_zero_trust_foundations
+    - bridge_compute_to_zero_trust
+
+evidence:
+  labs: true
+  diagrams: true
+  deployments: true
+
+lock:
+  statement: >
+    This file is the single source of truth for Phase 2 — Secure Compute
+    Foundations. All labs, diagrams, Academy content, AI reasoning, and
+    consulting outputs must conform to this authority.
+  change_control: authority_revision_required
